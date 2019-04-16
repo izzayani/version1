@@ -1,13 +1,14 @@
 <?php
 
-include_once("config.php");
+include 'config.php';
 
 if(isset($_POST['Submit'])){
+    $id = $_POST['id'];
     $nama = $_POST['nama'];
     $harga = $_POST['harga'];
     
-    $result = mysqli_query($mysqli, "INSERT INTO barangmainan(nama,harga)"
-            . "VALUES('$nama','$harga')");
+    $result = mysqli_query($con, "INSERT INTO barangmainan(id,nama,harga)
+            VALUES('$id',$nama','$harga')");
     
     echo "<script>alert('Tambah maklumat berjaya');"
     . "window.location='index.php'</script>";
@@ -25,6 +26,10 @@ else
         <fieldset>
             <form action="add.php" method="post" name="form1">
                 <table width="25%" border="0">
+                    <tr>
+                        <td>Id</td>
+                        <td><input type="text" name="id"></td>
+                    </tr>
                     <tr>
                         <td>Nama Produk</td>
                         <td><input type="text" name="nama"></td>
